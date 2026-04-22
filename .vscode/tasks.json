@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run cityscape dev server",
+			"type": "shell",
+			"command": "python3",
+			"args": [
+				"dev-server.py"
+			],
+			"isBackground": true,
+			"group": "build"
+		}
+	]
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CITYSCAPE</title>
+  <link rel="icon" type="image/png" href="./assets/crest-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <p id="local-run-note" class="local-run-note" hidden>
+      This project uses browser modules and needs a local server. Run `npm run dev` or `python3 -m http.server 8080`, then open the served URL.
+    </p>
+    <section id="game-shell" class="game-shell">
+      <aside id="side-panel" class="side-panel" hidden>
+        <div id="player-summary" class="player-summary" hidden></div>
+        <div id="tab-bar" class="tab-bar"></div>
+        <div id="panel-body" class="panel-body"></div>
+        <div class="save-controls">
+          <button class="save-button is-danger" data-action="new-world">Restart Game</button>
+        </div>
+        <p id="status-line" class="status-line"></p>
+      </aside>
+      <section class="map-stage">
+        <div id="top-strip" class="top-strip"></div>
+        <div class="canvas-frame">
+          <canvas id="map" width="1400" height="860" aria-label="North American desert strategy map"></canvas>
+          <div id="structure-popup" class="structure-popup" hidden></div>
+        </div>
+      </section>
+    </section>
+    <section id="intro-overlay" class="intro-overlay"></section>
+  </main>
+
+  <script>
+    const localRunNote = document.getElementById('local-run-note')
+
+    if (window.location.protocol === 'file:') {
+      localRunNote.hidden = false
+    } else {
+      import('./game.js')
+    }
+  </script>
+</body>
+</html>
